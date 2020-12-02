@@ -1,26 +1,28 @@
 package ddlog_test
 
-var(
+import (
 	"testing"
+
+	ddlog "github.com/twistingmercury/go-datadog"
 )
 
-func getConfig() ddlog.DDConfig[
-	return  ddlog.DDConfig{
+func getConfig() ddlog.DDConfig {
+	return ddlog.DDConfig{
 		TraceIntakeHost: "",
 		TraceIntakePort: 9456,
 		LogIntakeURL:    "",
-		LogIntakePort :  6789,
-		APIKey       :   "",
-		Environment  :   "unit test",
-		ServiceName    : "",
-		ServiceVersion : "",
-		GlobalTags    :  map[string]interface{} `yaml:"globaltags"`
-		Commit      :    "",
-		LogBufferSize :  1,
-		LogTimeout   :   1,
+		LogIntakePort:   6789,
+		APIKey:          "",
+		Environment:     "unit test",
+		ServiceName:     "",
+		ServiceVersion:  "",
+		GlobalTags:      make(map[string]interface{}, 0),
+		Commit:          "",
+		LogBufferSize:   1,
+		LogTimeout:      1,
 	}
-]
+}
 
-func TestInitialize(t *testing.T){
+func TestInitialize(t *testing.T) {
 
 }

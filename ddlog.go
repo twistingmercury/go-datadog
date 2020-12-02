@@ -215,7 +215,7 @@ func sendEvents() {
 		case r.StatusCode >= 400 && r.StatusCode < 500:
 			ilog.Errorf("client error: %s", format)
 		case r.StatusCode >= 500:
-			ilog.Warn("dd error: %s", format)
+			ilog.Warnf("dd error: %s", format)
 		default:
 			ilog.Debug("log posted successfully")
 			events.Delete(i)
