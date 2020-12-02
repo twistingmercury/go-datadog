@@ -78,6 +78,10 @@ func newLogEntry() *logrus.Entry {
 			"dd.env":     ddCfg.Environment,
 			"dd.service": ddCfg.ServiceName,
 			"dd.version": ddCfg.ServiceVersion,
+			"env":        ddCfg.Environment,
+			"service":    ddCfg.ServiceName,
+			"version":    ddCfg.ServiceVersion,
+			"source":     "go",
 		})
 }
 
