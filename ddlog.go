@@ -34,11 +34,15 @@ type DDConfig struct {
 	LogTimeout      int                    `yaml:"logtimeout"`
 }
 
-var ddCfg DDConfig
-var logTo time.Duration
+var (
+	ddCfg    DDConfig
+	logTo    time.Duration
+	hostName string
+)
 
 // Initialize bootstraps the logging and tracing to be sent to a Datadog Agent.
 func Initialize(c DDConfig) (err error) {
+	hostName, _ = os.Hostname()
 	ddCfg = c
 	logTo, err = time.ParseDuration(fmt.Sprintf("%ds", c.LogTimeout))
 	if err != nil {
@@ -75,13 +79,9 @@ func Stop() {
 func newLogEntry() *logrus.Entry {
 	return logrus.WithFields(
 		logrus.Fields{
-			// "dd.env":     ddCfg.Environment,
-			// "dd.service": ddCfg.ServiceName,
-			// "dd.version": ddCfg.ServiceVersion,
 			"env":     ddCfg.Environment,
 			"service": ddCfg.ServiceName,
 			"version": ddCfg.ServiceVersion,
-			"source":  "go",
 		})
 }
 
