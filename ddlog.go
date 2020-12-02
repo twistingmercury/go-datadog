@@ -75,13 +75,13 @@ func Stop() {
 func newLogEntry() *logrus.Entry {
 	return logrus.WithFields(
 		logrus.Fields{
-			"dd.env":     ddCfg.Environment,
-			"dd.service": ddCfg.ServiceName,
-			"dd.version": ddCfg.ServiceVersion,
-			"env":        ddCfg.Environment,
-			"service":    ddCfg.ServiceName,
-			"version":    ddCfg.ServiceVersion,
-			"source":     "go",
+			// "dd.env":     ddCfg.Environment,
+			// "dd.service": ddCfg.ServiceName,
+			// "dd.version": ddCfg.ServiceVersion,
+			"env":     ddCfg.Environment,
+			"service": ddCfg.ServiceName,
+			"version": ddCfg.ServiceVersion,
+			"source":  "go",
 		})
 }
 
